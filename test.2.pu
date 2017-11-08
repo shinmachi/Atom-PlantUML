@@ -1,0 +1,9 @@
+actor user1
+actor user2
+left to right direction
+
+rectangle Lipid-Repository{
+  user2 -right-> (アカウント登録)
+  user2 -right-> (脂質を登録)
+  user2 -right-> (脂質を検索)
+}
