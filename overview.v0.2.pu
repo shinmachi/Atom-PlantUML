@@ -56,12 +56,9 @@ node "Glycosmos Portal" as glycosmosp {
 }
 
 'LINKING'
-'glycomb -- glytoucan
-'uniprot -- glycomb
-'unicarbkb -- glycomb
-'glycoprotdb -- glycomb
 protein -- glycomb
-gpost -- glycomb
+'gpost <-- glycomb
+glycomb --> gpost
 glytoucan -- glycomb
 lipidr -- glycomb
 glycomb -- glycosmosdb
