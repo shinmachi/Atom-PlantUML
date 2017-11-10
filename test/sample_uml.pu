@@ -1,0 +1,31 @@
+@startuml
+title <size:18>ユースケース図のサンプル</size>
+left to right direction
+
+actor :社員: as user
+actor :総務: as admin
+actor :データベース: as DB
+note "次のバージョンで\n対応" as next
+
+user <|-- admin : 汎化
+
+package "勤怠管理システム" <<Rect>> {
+
+usecase (<u>勤怠入力</u>\n 拡張点\n 早退、遅刻) as input
+
+user -- (出社)
+(出社) -- input
+input <.. (早退理由入力) : <<extend>>
+(早退理由入力) .. next
+(早退理由入力) -- DB
+user -- (帰宅)
+(帰宅) -- input
+input ..> (社員認証) : <<include>>
+(社員認証) -- DB
+admin -- (勤怠変更)
+(勤怠変更) ..> (社員認証) : <<include>>
+(勤怠変更) -- DB
+}
+
+'end package
+@enduml

@@ -1,0 +1,71 @@
+@startuml
+
+'actor'
+actor 登録担当者C
+actor 登録担当者D
+actor 登録担当者E
+actor 利用者
+'actor 管理者
+
+left to right direction
+
+node "GlyTouCan" as glytoucan {
+登録担当者C-right-> (糖鎖構造情報を登録する)
+}
+
+node "Glycomb Repository" as glycomb {
+usecase (ユーザーアカウントを登録する) as userAccount
+登録担当者E -right-> userAccount
+登録担当者E -right-> (複合糖質情報を登録する)
+登録担当者E -right-> (複合糖質情報を検索する)
+登録担当者E -right-> (複合糖質情報を見る)
+}
+
+rectangle "jPOST.org" as jpostorg {
+  node "jPOST" as jpost {
+  }
+  node "gPOST" as gpost {
+  }
+}
+
+rectangle "Protein" as protein {
+  node "UniProt" as uniprot {
+  }
+
+  node "UniCarbKB" as unicarbkb {
+  }
+
+  node "GlycoProtDB" as glycoprotdb {
+  }
+}
+
+node "Lipid Repository" as lipidr {
+usecase (ユーザーアカウントを登録する) as userLipidR
+登録担当者D -right-> userLipidR
+登録担当者D -right->  (脂質情報を登録する)
+登録担当者D -right->  (脂質情報を検索する)
+登録担当者D -right->  (脂質情報を見る)
+}
+
+node "GlyCosmos Database" as glycosmosdb {
+利用者 -right-> (糖鎖関連パスウェイを検索する)
+利用者 -right-> (糖鎖関連パスウェイを見る)
+}
+
+node "Glycosmos Portal" as glycosmosp {
+}
+
+'LINKING'
+'glycomb -- glytoucan
+'uniprot -- glycomb
+'unicarbkb -- glycomb
+'glycoprotdb -- glycomb
+protein -- glycomb
+gpost -- glycomb
+glytoucan -- glycomb
+lipidr -- glycomb
+glycomb -- glycosmosdb
+glycosmosdb -- glycosmosp
+
+
+@enduml

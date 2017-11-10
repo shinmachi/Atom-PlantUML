@@ -1,0 +1,45 @@
+@startuml
+actor 登録担当者
+actor 管理者
+actor GlycombTS
+note right: メインのトリプルストア
+actor GlycombUserTS
+note right: ユーザー情報のみを扱ったトリプルストア 
+actor GitHub.io
+
+left to right direction
+rectangle Glycombシステム{
+登録担当者 -right-> (アカウントを登録する)
+登録担当者 -right-> (複合糖質情報を登録する)
+登録担当者 -right-> (複合糖質情報を検索する)
+登録担当者 -right-> (複合糖質情報を見る)
+登録担当者 -right-> (ドキュメントを見る)
+登録担当者 -right-> (複合糖質情報を更新する)
+登録担当者 -right-> (ユーザー情報を更新する)
+
+管理者 -right-> (複合糖質情報を登録する)
+管理者 -right-> (複合糖質情報を検索する)
+管理者 -right-> (複合糖質情報を見る)
+管理者 -right-> (ドキュメントを見る)
+管理者 -right-> (ユーザー情報を見る)
+管理者 -right-> (複合糖質情報を更新する)
+管理者 -right-> (ドキュメントを更新する)
+管理者 -right-> (ユーザー情報を更新する)
+
+(複合糖質情報を登録する) -- GlycombTS
+(複合糖質情報を検索する) -- GlycombTS
+(複合糖質情報を見る) -- GlycombTS
+(複合糖質情報を更新する) -- GlycombTS
+(ユーザー情報を更新する) -- GlycombTS
+
+(アカウントを登録する) -- GlycombUserTS
+(ユーザー情報を見る) -- GlycombUserTS
+(ユーザー情報を更新する) -- GlycombUserTS
+
+(ドキュメントを見る) -- GitHub.io
+(ドキュメントを更新する) -- GitHub.io
+
+}
+
+
+@enduml

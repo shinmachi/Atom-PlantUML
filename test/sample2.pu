@@ -1,0 +1,14 @@
+@startuml{plantuml_usecase_subject.png}
+left to right direction
+
+actor :利用者: as user
+actor :図書館職員: as admin
+
+package "図書館" <<Rect>> {
+    user -- (本を借りる)
+    (本を借りる) -- admin
+    user -- (本を返却する)
+    (本を返却する) -- admin
+    (本を登録する) -- admin
+}
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+
+actor 登録担当者A
+actor 登録担当者B
+
+
+left to right direction
+
+package "Glycomb Repository" as glycomeR {
+usecase (ユーザーアカウントを登録する) as userGlycomeb
+登録担当者A --> userGlycomeb
+}
+
+package "Lipid Repository" as lipidR {
+usecase (ユーザーアカウントを登録する) as userLipidR
+登録担当者B --> userLipidR
+}
+
+glycomeR -- lipidR
+@enduml

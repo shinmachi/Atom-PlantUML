@@ -1,0 +1,65 @@
+@startuml
+
+'actor'
+actor 登録担当者
+actor 担当者A
+actor 担当者B
+actor 担当者C
+actor 担当者D
+'actor 管理者
+
+'usecase'
+
+left to right direction
+
+node "GlyTouCan" as glytoucan {
+担当者C -right-> (糖鎖構造情報を登録する)
+}
+
+node "Glycomb" as glycomb {
+登録担当者 -right-> (アカウントを登録する)
+登録担当者 -right-> (複合糖質情報を登録する)
+登録担当者 -right-> (複合糖質情報を検索する)
+登録担当者 -right-> (複合糖質情報を見る)
+}
+
+node "JPOST" as jpost {
+担当者A -right-> (糖タンパク質情報を登録する)
+}
+
+node "UniProt" as uniprot {
+担当者B -right-> (Uniprot アクセッションを取得する)
+}
+
+node "Lipid Repository" as lipidr {
+担当者D -right->  (糖脂質情報を登録する)
+}
+'linking'
+'glycomb -- glytoucan
+uniprot -- glycomb
+jpost -- glycomb
+glytoucan -- glycomb
+lipidr -- glycomb
+
+/'
+rectangle Glycombシステム{
+登録担当者 -right-> (アカウントを登録する)
+登録担当者 -right-> (複合糖質情報を登録する)
+登録担当者 -right-> (複合糖質情報を検索する)
+登録担当者 -right-> (複合糖質情報を見る)
+登録担当者 -right-> (ドキュメントを見る)
+登録担当者 -right-> (複合糖質情報を更新する)
+登録担当者 -right-> (ユーザー情報を更新する)
+管理者 -right-> (複合糖質情報を登録する)
+管理者 -right-> (複合糖質情報を検索する)
+管理者 -right-> (複合糖質情報を見る)
+管理者 -right-> (ドキュメントを見る)
+管理者 -right-> (ユーザー情報を見る)
+管理者 -right-> (複合糖質情報を更新する)
+管理者 -right-> (ドキュメントを更新する)
+管理者 -right-> (ユーザー情報を更新する)
+}
+'/
+
+
+@enduml
