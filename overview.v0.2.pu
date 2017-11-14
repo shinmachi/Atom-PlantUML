@@ -50,6 +50,8 @@ usecase (ユーザーアカウントを登録する) as userLipidR
 node "GlyCosmos Database" as glycosmosdb {
 利用者 -right-> (糖鎖関連パスウェイを検索する)
 利用者 -right-> (糖鎖関連パスウェイを見る)
+利用者 -right-> (複合糖質を検索する)
+利用者 -right-> (糖鎖を検索する)
 }
 
 node "Glycosmos Portal" as glycosmosp {
